@@ -9,7 +9,7 @@ This sheet's purpose is to give medieval era spell book look to the website.
 
 body {
     font-family: 'Garamond', serif; /* Classic medieval font */
-    background: url('parchment-texture.jpg') repeat; /* Add a parchment-like background */
+    background: url('imageAndFont/parchment-texture.jpg') repeat; /* Add a parchment-like background */
     color: #2b2a2a; /* Dark gray color */
     line-height: 1.6;
     padding: 20px;
