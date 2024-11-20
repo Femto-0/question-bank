@@ -75,23 +75,21 @@ foreach ($courses as $course) {
         <button type="submit">Filter</button>
     </form>
 
-    <h2>Approved Question Papers</h2>
-    <?php
-    $count = 0;  // Initialize count
-
-// Use a for loop to iterate a limited number of times
-for ($count = 0; $count < 2; $count++) {  //doing so shows the latest two question paper uploaded to the db
-    if (isset($documents[$count])) {  // Ensure we have a document at this index
-        $document = $documents[$count]; // Get the document
-        ?>
-        <div class="document">
-            <p>Course: <?php echo $document['course_id']; ?> | Test: <?php echo $document['test_id']; ?></p>
-            <img src="data:image/jpeg;base64,<?php echo base64_encode($document['question_paper_image']); ?>" alt="Question Paper" width="300">
-        </div>
-        <?php
-    }
-}
-?>
+   <!-- Dynamically display images from the database -->
+   <div class="documents">
+        <?php if (count($documents) > 0): ?>
+            <?php foreach ($documents as $document): ?>
+                <div class="document">
+                    <p>Course: <?php echo htmlspecialchars($document['course_id']); ?> | Test: <?php echo htmlspecialchars($document['test_id']); ?></p>
+                    <img src="data:image/jpeg;base64,<?php echo base64_encode($document['question_paper_image']); ?>" alt="Question Paper" width="300">
+                </div>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <h2> Question paper not found <h2>
+            <img src="imageAndFont/the_question_bank_how_to.png" alt="how to use the question bank correctly" height="700">
+            <img src="imageAndFont/the_question_bank_commandments.png" alt="Rules to upload questio paper" height="1080">
+        <?php endif; ?>
+    </div>
 </main>
 </body>
 </html>
